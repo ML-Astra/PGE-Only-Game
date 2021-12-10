@@ -5,13 +5,15 @@
 class PGE001 : public olc::PixelGameEngine {
 public:
 	PGE001() {
+		// I really need to change this at somepoint
 		sAppName = "PGE1";
 	};
 public:
+	// On Start
 	bool OnUserCreate() override {
 		return true;
 	};
-
+	// On Every Frame
 	bool OnUserUpdate(float fTime) override {
 		for (int x = 0; x < ScreenWidth(); x++)
 			for (int y = 0; y < ScreenHeight(); y++)
@@ -23,11 +25,13 @@ public:
 
 int main() {
 	PGE001 app;
-
-	if (app.Construct(256, 240, 2, 2))
+	// Width, Height, Scale X, Scale Y
+	if (app.Construct(256, 240, 4, 4))
 		app.Start();
 	else{
+		// Literally here to catch in the case of the game engine not being able to start.
 		std::cout << "Error Starting PGE";
+		// Need to figure out the OS Agnostic version of this.
 		system("pause");
 	}
 };
